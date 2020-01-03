@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ModelProject.Infra.CrossCutting;
 using ModelProject.Presentation.AutoMapper;
+using ModelProject.Presentation.Filters;
 
 namespace ModelProject.Presentation
 {
@@ -24,6 +25,11 @@ namespace ModelProject.Presentation
             services.AddControllers();
             services.AddAutoMapper(typeof(ViewModelMappingProfile));
             BootStrapper.RegisterServices(services, Configuration);
+
+            services.AddMvcCore(options =>
+            {
+                options.Filters.Add(typeof(OneTransactionFilter));
+            });
 
             services.AddCors(o => o.AddPolicy("CorsPolicy", builder =>
             {

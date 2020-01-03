@@ -7,9 +7,8 @@ using ModelProject.Core.Selectors;
 
 namespace ModelProject.Infra.Data.Repositories
 {
-    public abstract class RepositoryBase<TEntity, TSelector> : IRepositoryBase<TEntity, TSelector>
+    public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity>
         where TEntity : EntityBase
-        where TSelector : SelectorBase
     {
         protected readonly TweetContext _context;
 
@@ -21,17 +20,6 @@ namespace ModelProject.Infra.Data.Repositories
         public TEntity Get(long id)
         {
             return CreateQuery().SingleOrDefault(a => a.Id == id);
-        }
-
-        public IList<TEntity> Get(TSelector selector)
-        {
-            IQueryable<TEntity> query = CreateQuery();
-
-            query = Parameters(query, selector);
-            query = Paginate(query, selector);
-            query = Order(query);
-
-            return query.ToList();
         }
 
         public IList<TEntity> Get()
@@ -46,24 +34,40 @@ namespace ModelProject.Infra.Data.Repositories
         public void Add(TEntity entity)
         {
             _context.Set<TEntity>().Add(entity);
-            Save();
         }
 
         public void Update(TEntity entity)
         {
             _context.Entry(entity).State = EntityState.Modified;
-            Save();
         }
 
         public void Remove(TEntity entity)
         {
             _context.Entry(entity).State = EntityState.Deleted;
-            Save();
         }
 
         public virtual IQueryable<TEntity> CreateQuery()
         {
             return _context.Set<TEntity>().AsNoTracking();
+        }
+    }
+
+    public abstract class RepositoryBase<TEntity, TSelector> : RepositoryBase<TEntity>, IRepositoryBase<TEntity, TSelector>
+        where TEntity : EntityBase
+        where TSelector : SelectorBase
+    {
+        public RepositoryBase(TweetContext context)
+            : base(context) { }
+
+        public IList<TEntity> Get(TSelector selector)
+        {
+            IQueryable<TEntity> query = CreateQuery();
+
+            query = Parameters(query, selector);
+            query = Paginate(query, selector);
+            query = Order(query);
+
+            return query.ToList();
         }
 
         public abstract IQueryable<TEntity> Parameters(IQueryable<TEntity> query, TSelector selector);
@@ -84,11 +88,6 @@ namespace ModelProject.Infra.Data.Repositories
         public IQueryable<TEntity> Order(IQueryable<TEntity> query)
         {
             return query.OrderByDescending(a => a.Id);
-        }
-
-        protected void Save()
-        {
-            _context.SaveChanges();
         }
     }
 }

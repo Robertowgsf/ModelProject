@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ModelProject.Core.Selectors
+﻿namespace ModelProject.Core.Selectors
 {
     public class SelectorBase
     {
