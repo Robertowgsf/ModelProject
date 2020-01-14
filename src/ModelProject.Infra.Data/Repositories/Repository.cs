@@ -1,18 +1,18 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
-using ModelProject.Core.Interfaces.Repositories;
-using ModelProject.Core.Entities;
-using ModelProject.Core.Selectors;
+using ModelProject.Domain.Interfaces.Repositories;
+using ModelProject.Domain.Entities;
+using ModelProject.Domain.Selectors;
 
 namespace ModelProject.Infra.Data.Repositories
 {
-    public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity>
+    public class Repository<TEntity> : IRepository<TEntity>
         where TEntity : EntityBase
     {
         protected readonly TweetContext _context;
 
-        public RepositoryBase(TweetContext context)
+        public Repository(TweetContext context)
         {
             _context = context;
         }
@@ -52,11 +52,11 @@ namespace ModelProject.Infra.Data.Repositories
         }
     }
 
-    public abstract class RepositoryBase<TEntity, TSelector> : RepositoryBase<TEntity>, IRepositoryBase<TEntity, TSelector>
+    public class Repository<TEntity, TSelector> : Repository<TEntity>, IRepository<TEntity, TSelector>
         where TEntity : EntityBase
-        where TSelector : SelectorBase
+        where TSelector : Selector
     {
-        public RepositoryBase(TweetContext context)
+        public Repository(TweetContext context)
             : base(context) { }
 
         public IList<TEntity> Get(TSelector selector)
@@ -70,7 +70,10 @@ namespace ModelProject.Infra.Data.Repositories
             return query.ToList();
         }
 
-        public abstract IQueryable<TEntity> Parameters(IQueryable<TEntity> query, TSelector selector);
+        public virtual IQueryable<TEntity> Parameters(IQueryable<TEntity> query, TSelector selector)
+        {
+            return query;
+        }
 
         public IQueryable<TEntity> Paginate(IQueryable<TEntity> query, TSelector selector)
         {

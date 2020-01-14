@@ -1,6 +1,6 @@
-﻿namespace ModelProject.Core.Selectors
+﻿namespace ModelProject.Domain.Selectors
 {
-    public class SelectorBase
+    public class Selector
     {
         public int Page { get; set; }
         public int? RowsPerPage { get; set; }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ModelProject.Core.Entities
+namespace ModelProject.Domain.Entities
 {
     public class EntityBase
     {

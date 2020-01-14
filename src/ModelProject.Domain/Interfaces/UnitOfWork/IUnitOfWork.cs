@@ -1,4 +1,4 @@
-﻿namespace ModelProject.Core.Interfaces.UnitOfWork
+﻿namespace ModelProject.Domain.Interfaces.UnitOfWork
 {
     public interface IUnitOfWork
     {

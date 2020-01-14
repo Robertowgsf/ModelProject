@@ -1,4 +1,4 @@
-﻿using ModelProject.Core.Entities;
+﻿using ModelProject.Domain.Entities;
 
 namespace ModelProject.Presentation.ViewModels
 {

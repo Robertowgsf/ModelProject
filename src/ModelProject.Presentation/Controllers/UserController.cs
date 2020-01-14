@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using ModelProject.Core.Interfaces.Services;
-using ModelProject.Core.Entities;
-using ModelProject.Core.Selectors;
+using ModelProject.Domain.Interfaces.Services;
+using ModelProject.Domain.Entities;
+using ModelProject.Domain.Selectors;
 using ModelProject.Presentation.ViewModels;
 
 namespace ModelProject.Presentation.Controllers

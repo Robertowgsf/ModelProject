@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using ModelProject.Core.Entities;
+using ModelProject.Domain.Entities;
 using ModelProject.Presentation.ViewModels;
 
 namespace ModelProject.Presentation.AutoMapper

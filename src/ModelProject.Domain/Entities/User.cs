@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ModelProject.Core.Entities
+namespace ModelProject.Domain.Entities
 {
     public class User : EntityBase
     {

@@ -10,8 +10,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ModelProject.Infra.Data.Migrations
 {
     [DbContext(typeof(TweetContext))]
-    [Migration("20200103195259_TweetBase")]
-    partial class TweetBase
+    [Migration("20200112011700_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace ModelProject.Infra.Data.Migrations
                 .HasAnnotation("ProductVersion", "3.1.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-            modelBuilder.Entity("ModelProject.Core.Entities.Tweet", b =>
+            modelBuilder.Entity("ModelProject.Domain.Entities.Tweet", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -50,7 +50,7 @@ namespace ModelProject.Infra.Data.Migrations
                     b.ToTable("Tweets");
                 });
 
-            modelBuilder.Entity("ModelProject.Core.Entities.User", b =>
+            modelBuilder.Entity("ModelProject.Domain.Entities.User", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -77,9 +77,9 @@ namespace ModelProject.Infra.Data.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("ModelProject.Core.Entities.Tweet", b =>
+            modelBuilder.Entity("ModelProject.Domain.Entities.Tweet", b =>
                 {
-                    b.HasOne("ModelProject.Core.Entities.User", "User")
+                    b.HasOne("ModelProject.Domain.Entities.User", "User")
                         .WithMany("Tweets")
                         .HasForeignKey("UserId");
                 });

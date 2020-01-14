@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.Filters;
-using ModelProject.Core.Interfaces.UnitOfWork;
+using ModelProject.Domain.Interfaces.UnitOfWork;
 
 namespace ModelProject.Presentation.Filters
 {

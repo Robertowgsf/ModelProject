@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using ModelProject.Core.Entities;
-using ModelProject.Core.Selectors;
+using ModelProject.Domain.Entities;
+using ModelProject.Domain.Selectors;
 
-namespace ModelProject.Core.Interfaces.Repositories
+namespace ModelProject.Domain.Interfaces.Repositories
 {
-    public interface IRepositoryBase<TEntity>
+    public interface IRepository<TEntity>
         where TEntity : EntityBase
     {
         TEntity Get(long id);
@@ -14,9 +14,9 @@ namespace ModelProject.Core.Interfaces.Repositories
         void Remove(TEntity entity);
     }
 
-    public interface IRepositoryBase<TEntity, TSelector> : IRepositoryBase<TEntity>
+    public interface IRepository<TEntity, TSelector> : IRepository<TEntity>
         where TEntity : EntityBase
-        where TSelector : SelectorBase
+        where TSelector : Selector
     {
         IList<TEntity> Get(TSelector selector);
     }

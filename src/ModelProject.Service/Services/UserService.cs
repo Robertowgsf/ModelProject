@@ -1,13 +1,13 @@
-﻿using ModelProject.Core.Entities;
-using ModelProject.Core.Selectors;
-using ModelProject.Core.Interfaces.Services;
-using ModelProject.Core.Interfaces.Repositories;
+﻿using ModelProject.Domain.Entities;
+using ModelProject.Domain.Selectors;
+using ModelProject.Domain.Interfaces.Services;
+using ModelProject.Domain.Interfaces.Repositories;
 
 namespace ModelProject.Application.Services
 {
-    public class TweetService : ServiceBase<Tweet, TweetSelector>, ITweetService
+    public class UserService : ServiceBase<User, UserSelector>, IUserService
     {
-        public TweetService(ITweetRepository repository)
+        public UserService(IUserRepository repository)
             : base(repository) { }
     }
 }

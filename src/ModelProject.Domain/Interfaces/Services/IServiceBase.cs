@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
-using ModelProject.Core.Entities;
-using ModelProject.Core.Selectors;
+using ModelProject.Domain.Entities;
+using ModelProject.Domain.Selectors;
 
-namespace ModelProject.Core.Interfaces.Services
+namespace ModelProject.Domain.Interfaces.Services
 {
     public interface IServiceBase<TEntity, TSelector>
         where TEntity : EntityBase
-        where TSelector : SelectorBase
+        where TSelector : Selector
     {
         TEntity Get(long id);
         IList<TEntity> Get(TSelector selector);

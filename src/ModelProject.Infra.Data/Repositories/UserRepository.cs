@@ -1,11 +1,11 @@
-﻿using ModelProject.Core.Entities;
-using ModelProject.Core.Interfaces.Repositories;
-using ModelProject.Core.Selectors;
+﻿using ModelProject.Domain.Entities;
+using ModelProject.Domain.Interfaces.Repositories;
+using ModelProject.Domain.Selectors;
 using System.Linq;
 
 namespace ModelProject.Infra.Data.Repositories
 {
-    public class UserRepository : RepositoryBase<User, UserSelector>, IUserRepository
+    public class UserRepository : Repository<User, UserSelector>, IUserRepository
     {
         public UserRepository(TweetContext context) 
             : base(context) { }

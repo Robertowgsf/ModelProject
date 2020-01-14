@@ -1,18 +1,18 @@
 ﻿using System.Collections.Generic;
-using ModelProject.Core.Entities;
-using ModelProject.Core.Selectors;
-using ModelProject.Core.Interfaces.Services;
-using ModelProject.Core.Interfaces.Repositories;
+using ModelProject.Domain.Entities;
+using ModelProject.Domain.Selectors;
+using ModelProject.Domain.Interfaces.Services;
+using ModelProject.Domain.Interfaces.Repositories;
 
 namespace ModelProject.Application.Services
 {
     public abstract class ServiceBase<TEntity, TSelector> : IServiceBase<TEntity, TSelector>
         where TEntity : EntityBase
-        where TSelector : SelectorBase
+        where TSelector : Selector
     {
-        protected readonly IRepositoryBase<TEntity, TSelector> _repository;
+        protected readonly IRepository<TEntity, TSelector> _repository;
 
-        public ServiceBase(IRepositoryBase<TEntity, TSelector> repository)
+        public ServiceBase(IRepository<TEntity, TSelector> repository)
         {
             _repository = repository;
         }

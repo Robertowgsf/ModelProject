@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage;
-using ModelProject.Core.Interfaces.UnitOfWork;
+using ModelProject.Domain.Interfaces.UnitOfWork;
 
 namespace ModelProject.Infra.Data.UoW
 {

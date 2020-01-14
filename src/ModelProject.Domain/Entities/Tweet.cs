@@ -1,4 +1,4 @@
-﻿namespace ModelProject.Core.Entities
+﻿namespace ModelProject.Domain.Entities
 {
     public class Tweet : EntityBase
     {
